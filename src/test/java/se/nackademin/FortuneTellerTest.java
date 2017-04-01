@@ -42,4 +42,28 @@ public class FortuneTellerTest {
         boolean result = fortuneTeller.setAge("not an integer");
         assertFalse("should return false for invalid input", result);
     }
+        @Test
+    public void testSetLocationWithNullInput() {
+        MagicNumbers magicNumbersMock = mock(MagicNumbers.class);
+        Translator translatorMock = mock(Translator.class);
+        FortuneTeller fortuneTeller = new FortuneTeller(magicNumbersMock, translatorMock);
+        boolean result = fortuneTeller.setLocation(null);
+        assertFalse("setLocation should return false for null input",result);
+    }        
+        @Test
+    public void testSetLocationWithEmptyInput() {
+        MagicNumbers magicNumbersMock = mock(MagicNumbers.class);
+        Translator translatorMock = mock(Translator.class);
+        FortuneTeller fortuneTeller = new FortuneTeller(magicNumbersMock, translatorMock);
+        boolean result = fortuneTeller.setLocation("");
+        assertFalse("setLocation should return false for empty input",result);        
+    }
+        @Test
+    public void testSetLocationWithValidInput() {
+        MagicNumbers magicNumbersMock = mock(MagicNumbers.class);
+        Translator translatorMock = mock(Translator.class);
+        FortuneTeller fortuneTeller = new FortuneTeller(magicNumbersMock, translatorMock);
+        boolean result = fortuneTeller.setLocation("Stockholm");
+        assertTrue("setLocation should return true for valid input",result);        
+    }    
 }
