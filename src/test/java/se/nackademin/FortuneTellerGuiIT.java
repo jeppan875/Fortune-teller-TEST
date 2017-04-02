@@ -45,10 +45,10 @@ public class FortuneTellerGuiIT {
 
     private FrameFixture window;
 
-    @BeforeClass
-    public static void setUpOnce() {
-        FailOnThreadViolationRepaintManager.install();
-    }
+//    @BeforeClass
+//    public static void setUpOnce() {
+//        FailOnThreadViolationRepaintManager.install();
+//    }
 
     @Before
     public void setUp() {
