@@ -90,6 +90,71 @@ public class FortuneTellerGuiIT {
         assertThat("error message should contain text 'Invalid height'", errorMessage, containsString("Invalid height"));
         window.optionPane().button().click();
     }
+         @Test(timeout = 10000)
+         //Issue#37 ArrayIndexOutOfBoundsException
+         //Ignore all sign except numeric as income  
+    public void testIgnoreSignsOnIncome() {
+        window.textBox("nameField").enterText("Svante");
+        window.textBox("incomeField").enterText("-10000");
+        window.textBox("locationField").enterText("Malmö");
+        window.textBox("ageField").enterText("27");
+        window.textBox("heightField").enterText("0");
+        window.button("calculateButton").click();
+        String output = window.textBox("resultField").text();
+        assertEquals("Verify that the fortune is calculated correctly", "Din framtid är vacker. Du borde sluta resa. Vi ser att du snart kommer att skaffa en hund. Snart kommer du vilja mäta, men då är det viktigt att du är stor.", output);      
+    }
+         @Test(timeout = 10000)
+         //Issue#38 ArrayIndexOutOfBoundsException
+         //C is always negative before going into the while loop        
+    public void testCNegativeBeforeWhileLoop() {
+        window.textBox("nameField").enterText("Svante");
+        window.textBox("incomeField").enterText("10000");
+        window.textBox("locationField").enterText("Malmö");
+        window.textBox("ageField").enterText("27");
+        window.textBox("heightField").enterText("0");
+        window.button("calculateButton").click();
+        String output = window.textBox("resultField").text();
+        assertEquals("Verify that the fortune is calculated correctly", "Din framtid är vacker. Du borde sluta resa. Vi ser att du snart kommer att skaffa en hund. Snart kommer du vilja mäta, men då är det viktigt att du är stor.", output);
+    }
+         @Test(timeout = 10000)
+         //Issue#39 ArrayIndexOutOfBoundsException
+         //Ignore all sign except numeric as age       
+    public void testIgnoreSignsOnAge() {
+        window.textBox("nameField").enterText("Svante");
+        window.textBox("incomeField").enterText("10000");
+        window.textBox("locationField").enterText("Malmö");
+        window.textBox("ageField").enterText("-5");
+        window.textBox("heightField").enterText("165");
+        window.button("calculateButton").click();
+        String output = window.textBox("resultField").text();
+        assertEquals("Verify that the fortune is calculated correctly", "Din framtid är snabb. Du borde sluta resa. Vi ser att du snart kommer att skaffa en lönehöjning. Snart kommer du vilja äta, men då är det viktigt att du är mörk.", output);
+    }
+         @Test(timeout = 10000)
+         //Issue#40 ArrayIndexOutOfBoundsException
+         //Ignore all sign except numeric as height       
+    public void testIgnoreSignsOnHeight() {
+        window.textBox("nameField").enterText("Svante");
+        window.textBox("incomeField").enterText("10000");
+        window.textBox("locationField").enterText("Malmö");
+        window.textBox("ageField").enterText("27");
+        window.textBox("heightField").enterText("-20");
+        window.button("calculateButton").click();
+        String output = window.textBox("resultField").text();
+        assertEquals("Verify that the fortune is calculated correctly", "Din framtid är vacker. Du borde sluta resa. Vi ser att du snart kommer att skaffa ett barn. Snart kommer du vilja mäta, men då är det viktigt att du är ljus.", output);
+    }
+         @Test(timeout = 10000)
+         //Issue#38 ArrayIndexOutOfBoundsException
+         //D is always negative before going into the while loop  
+        public void testDNegativeBeforeWhileLoop() {
+        window.textBox("nameField").enterText("Svante");
+        window.textBox("incomeField").enterText("0");
+        window.textBox("locationField").enterText("Malmö");
+        window.textBox("ageField").enterText("27");
+        window.textBox("heightField").enterText("165");
+        window.button("calculateButton").click();
+        String output = window.textBox("resultField").text();
+        assertEquals("Verify that the fortune is calculated correctly", "Din framtid är vacker. Du borde sluta äta. Vi ser att du snart kommer att skaffa ett elstängsel. Snart kommer du vilja röra, men då är det viktigt att du är stor.", output);
+    }
 
     private FrameFixture window;
 
