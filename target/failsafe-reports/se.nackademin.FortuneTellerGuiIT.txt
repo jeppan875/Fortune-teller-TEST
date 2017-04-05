@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: se.nackademin.FortuneTellerGuiIT
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 66.212 sec - in se.nackademin.FortuneTellerGuiIT
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 101.037 sec - in se.nackademin.FortuneTellerGuiIT

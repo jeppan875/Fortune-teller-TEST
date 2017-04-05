@@ -11,7 +11,7 @@ public class MagicNumbers {
     public int calculateA() {
         int a = name.split(" ").length;
         a += age;
-        while (a > 10) {
+        while (a >10) {
             a -= 7;
         }
         return a;
